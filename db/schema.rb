@@ -10,27 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_09_065935) do
-
-  create_table "bodies", force: :cascade do |t|
-    t.string "weight"
-    t.string "tall"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "chat_users", force: :cascade do |t|
-    t.integer "chat_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "chats", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2018_08_10_020913) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment"
@@ -42,10 +22,9 @@ ActiveRecord::Schema.define(version: 2018_08_09_065935) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.integer "chat_id"
-    t.integer "chat_user_id"
-    t.string "chat_body"
+  create_table "dictionaries", force: :cascade do |t|
+    t.text "ask"
+    t.text "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -58,6 +37,13 @@ ActiveRecord::Schema.define(version: 2018_08_09_065935) do
     t.datetime "updated_at", null: false
     t.string "category"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "talks", force: :cascade do |t|
+    t.boolean "is_man"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
